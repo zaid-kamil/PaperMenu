@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_scanner_scene"
+    tools:context=".ScannerActivity">
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabScan"
+        android:layout_width="264dp"
+        android:layout_height="58dp"
+        android:text="Scan to Start session"
+        app:icon="@drawable/ic_baseline_camera_24"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="631dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/scan"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="260dp"
+        android:layout_height="0dp"
+        android:fontFamily="sans-serif-light"
+        android:text="find the QR code on the restaurant table you are sitting on. This will allow you to order from the app without a menu"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="477dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo"
+        android:text="Scan QR"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#EA4848"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
