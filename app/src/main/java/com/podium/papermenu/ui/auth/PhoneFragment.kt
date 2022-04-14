@@ -9,9 +9,7 @@ import com.podium.papermenu.R
 
 
 class PhoneFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-
-
+  
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

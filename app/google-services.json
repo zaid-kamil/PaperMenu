@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "629693563501",
+    "firebase_url": "https://finalone-appcode.firebaseio.com",
+    "project_id": "finalone-appcode",
+    "storage_bucket": "finalone-appcode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629693563501:android:79248994830763c27e7564",
+        "android_client_info": {
+          "package_name": "com.podium.papermenu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629693563501-042h7bjv3kgc0batnf2v1hj4k9ctp795.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.podium.papermenu",
+            "certificate_hash": "0528db175933cca67afacaa0935dcfab05101e32"
+          }
+        },
+        {
+          "client_id": "629693563501-617ro2oba61qs20g8utkcvl789m3aume.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArIM61-lz4BM1bmJK2VZs8WXLLvUQxlB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629693563501-617ro2oba61qs20g8utkcvl789m3aume.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

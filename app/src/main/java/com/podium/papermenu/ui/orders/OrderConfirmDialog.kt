@@ -4,19 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.podium.papermenu.databinding.FragmentOrderBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.podium.papermenu.databinding.DialogOrderConfirmationBinding
 
-class OrderFragment : Fragment() {
-
-    private var _binding: FragmentOrderBinding? = null
+class OrderConfirmDialog : BottomSheetDialogFragment() {
+    private var _binding: DialogOrderConfirmationBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentOrderBinding.inflate(inflater, container, false)
+    ): View? {
+        _binding = DialogOrderConfirmationBinding.inflate(
+            inflater,
+            container,
+            false
+        )
         return binding.root
     }
 
