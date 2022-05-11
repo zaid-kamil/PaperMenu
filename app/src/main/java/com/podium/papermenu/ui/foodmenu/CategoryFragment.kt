@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.podium.papermenu.CategoryAdapter
 import com.podium.papermenu.MyUtil
 import com.podium.papermenu.R
 import com.podium.papermenu.databinding.FragmentCategoryBinding
@@ -39,23 +41,46 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val util = MyUtil(requireContext())
-        if (util.getAll()?.isNotEmpty() == true) {
-            findNavController().navigate(R.id.action_foodFragment_to_orderConfirmDialog)
-        }
+
+        binding.recyclerView2.layoutManager = LinearLayoutManager(requireContext())
         categories = arrayListOf()
-        db.collection("categories").get()
-            .addOnSuccessListener { snapshot ->
-                snapshot.forEach {
-                    categories.add(Category(it["name"].toString()))
+        val adapter = CategoryAdapter(categories)
+        binding.recyclerView2.adapter = adapter
+        db.collection("categories").get().addOnSuccessListener { snapshot ->
+            categories.clear()
+            if (!snapshot.isEmpty) {
+                for (document in snapshot.documents) {
+                    document.toObject(Category::class.java)?.let { categories.add(it) }
                 }
-            }.addOnFailureListener {
-                Snackbar.make(binding.root, it.message.toString(), Snackbar.LENGTH_INDEFINITE)
-                    .show()
+            (binding.recyclerView2.adapter as CategoryAdapter).notifyDataSetChanged()
             }
+        }.addOnFailureListener {
+            Snackbar.make(binding.root, it.message.toString(), Snackbar.LENGTH_INDEFINITE)
+                .show()
+        }
+
+        binding.btnCOrder.setOnClickListener {
+            val prefs = MyUtil(requireContext())
+            val allOrders = prefs.getAll()
+            when {
+                allOrders?.isNotEmpty() == true -> {
+                    findNavController().navigate(R.id.action_navigation_food_menu_to_foodFragment)
+                }
+                else -> {
+                    Snackbar.make(
+                        binding.root,
+                        "Please order something from menu",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

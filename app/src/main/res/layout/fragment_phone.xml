@@ -49,9 +49,11 @@
         app:layout_constraintTop_toBottomOf="@+id/rectangle_3">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter your Phone Number"
+            android:inputType="phone"
             android:textColorHint="#1B1A1A" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -66,5 +68,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rectangle_3" />
+
+    <Button
+        android:id="@+id/btnVerify"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:text="Verify"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintEnd_toEndOf="@+id/extendedFloatingActionButton"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnVerify"
+        app:layout_constraintStart_toStartOf="@+id/extendedFloatingActionButton"
+        app:layout_constraintTop_toBottomOf="@+id/extendedFloatingActionButton">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editOTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Six digits of OTP" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

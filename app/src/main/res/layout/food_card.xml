@@ -2,10 +2,12 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    app:contentPadding="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,47 +15,66 @@
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_launcher_background" />
 
-        <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
+        <com.mcdev.quantitizerlibrary.VerticalQuantitizer
             android:id="@+id/h_q"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodprice" />
-
-        <TextView
-            android:id="@+id/foodname"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Food Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.01"
-            app:layout_constraintStart_toEndOf="@+id/img"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/foodprice"
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Food Name that is very long for eating"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/h_q"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img"
+            app:layout_constraintTop_toTopOf="@+id/img" />
+
+        <TextView
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:drawableLeft="@drawable/ic_baseline_attach_money_24"
             android:fontFamily="sans-serif-light"
             android:text="1239.00"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/img"
-            app:layout_constraintTop_toBottomOf="@+id/foodname" />
+            app:layout_constraintTop_toBottomOf="@+id/cat" />
+
+        <TextView
+            android:id="@+id/cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Category"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Single Serve"
+            app:layout_constraintBottom_toTopOf="@+id/price"
+            app:layout_constraintStart_toEndOf="@+id/img" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

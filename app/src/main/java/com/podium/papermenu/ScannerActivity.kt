@@ -13,30 +13,37 @@ import com.podium.papermenu.databinding.ActivityScannerBinding
 class ScannerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityScannerBinding
+    private lateinit var prefs: MyUtil
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        prefs = MyUtil(this)
         val barcodeLauncher =
             registerForActivityResult(ScanContract()) { result: ScanIntentResult ->
                 if (result.contents == null) {
                     Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
                 } else {
                     Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
+                    launchMenu()
                 }
             }
+
         binding.fabScan.setOnClickListener {
             val options = ScanOptions()
-            options.setDesiredBarcodeFormats(ScanOptions.ONE_D_CODE_TYPES)
+            options.setDesiredBarcodeFormats(ScanOptions.QR_CODE)
             options.setPrompt("Find your table's QR image")
             options.setBeepEnabled(true)
+
             options.setBarcodeImageEnabled(false)
             barcodeLauncher.launch(options)
         }
     }
 
+
+
     private fun launchMenu() {
+
         val i = Intent(this, MainActivity::class.java)
         startActivity(i)
         finish()
