@@ -23,8 +23,8 @@ class MyUtil(val context: Context) {
         return pref.edit().clear().apply()
     }
 
-    fun removeOrder(food: Food) {
-        pref.edit().remove(food.name).apply()
+    fun removeOrder(food: String) {
+        pref.edit().remove(food).apply()
     }
 
     fun setTable(table: String) {
@@ -32,6 +32,6 @@ class MyUtil(val context: Context) {
     }
 
     fun getTable(): String {
-        return pref.getString("table", "").toString()
+        return pref.getString("table", "Table One").toString()
     }
 }

@@ -59,14 +59,15 @@ class OrderConfirmDialog : BottomSheetDialogFragment() {
                 val cat = orderData[3]
                 val img = orderData[4]
                 val table = prefs.getTable()
-                val order = Order(table, name, price.toInt(), qty, cat, img)
+                val order = Order(table, name, qty.toInt(), price, cat, img)
                 db.collection("orders").add(order)
+
             }
             findNavController().navigate(R.id.action_orderConfirmDialog_to_navigation_orders)
         }
         binding.button.setOnClickListener {
             prefs.removeAll()
-            this.dialog?.hide()
+            findNavController().navigate(R.id.action_orderConfirmDialog_to_navigation_food_menu)
         }
     }
 

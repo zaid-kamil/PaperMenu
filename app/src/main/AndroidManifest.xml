@@ -25,13 +25,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.PaperMenuMain"
-            android:label="@string/title_activity_main" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.PaperMenuMain">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".FullscreenActivity"
@@ -39,7 +35,11 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.PaperMenu.Fullscreen">
-<!--            todo add intent-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data

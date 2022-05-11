@@ -41,7 +41,7 @@ class FoodAdapter(private val foodlist: ArrayList<Food>) :
                         prefs.updateOrder(food, value)
                     }
                     else{
-                        prefs.removeOrder(food)
+                        prefs.removeOrder(food.name)
                     }
                 }
             })

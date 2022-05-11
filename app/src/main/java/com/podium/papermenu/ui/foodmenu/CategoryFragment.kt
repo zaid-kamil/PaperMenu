@@ -42,29 +42,17 @@ class CategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val util = MyUtil(requireContext())
 
-        binding.recyclerView2.layoutManager = LinearLayoutManager(requireContext())
         categories = arrayListOf()
         val adapter = CategoryAdapter(categories)
+        binding.recyclerView2.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView2.adapter = adapter
-        db.collection("categories").get().addOnSuccessListener { snapshot ->
-            categories.clear()
-            if (!snapshot.isEmpty) {
-                for (document in snapshot.documents) {
-                    document.toObject(Category::class.java)?.let { categories.add(it) }
-                }
-            (binding.recyclerView2.adapter as CategoryAdapter).notifyDataSetChanged()
-            }
-        }.addOnFailureListener {
-            Snackbar.make(binding.root, it.message.toString(), Snackbar.LENGTH_INDEFINITE)
-                .show()
-        }
-
+        load_categories()
         binding.btnCOrder.setOnClickListener {
             val prefs = MyUtil(requireContext())
             val allOrders = prefs.getAll()
             when {
                 allOrders?.isNotEmpty() == true -> {
-                    findNavController().navigate(R.id.action_navigation_food_menu_to_foodFragment)
+                    findNavController().navigate(R.id.action_navigation_food_menu_to_orderConfirmDialog)
                 }
                 else -> {
                     Snackbar.make(
@@ -74,6 +62,25 @@ class CategoryFragment : Fragment() {
                     ).show()
                 }
             }
+        }
+    }
+
+    private fun load_categories() {
+        try {
+            db.collection("categories").get().addOnSuccessListener { snapshot ->
+                categories.clear()
+                if (!snapshot.isEmpty) {
+                    for (document in snapshot.documents) {
+                        document.toObject(Category::class.java)?.let { categories.add(it) }
+                    }
+                    (binding.recyclerView2.adapter as CategoryAdapter).notifyDataSetChanged()
+                }
+            }.addOnFailureListener {
+                Snackbar.make(binding.root, it.message.toString(), Snackbar.LENGTH_INDEFINITE)
+                    .show()
+            }
+        } catch (e: Exception) {
+
         }
     }
 
