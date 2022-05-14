@@ -65,7 +65,7 @@ class PhoneFragment : Fragment() {
                 if (e is FirebaseAuthInvalidCredentialsException) {
                 } else if (e is FirebaseTooManyRequestsException) {
                 }
-                Snackbar.make(binding.root, "verification failed", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.root, "verification failed ${e.message.toString()}", Snackbar.LENGTH_LONG).show()
             }
 
             override fun onCodeSent(
